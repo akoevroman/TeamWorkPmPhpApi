@@ -54,6 +54,7 @@ final class Rest
     private function execute($method, $action, $request = null)
     {
         $url =  "{$this->url}$action." . self::$FORMAT;
+
         $headers = ['Authorization: BASIC '. base64_encode(
             $this->key . ':xxx'
         )];

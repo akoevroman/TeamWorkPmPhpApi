@@ -2,6 +2,18 @@
 
 class Factory
 {
+    /**
+     * @param $method
+     * @param $parameters
+     *
+     * @return mixed
+     * @throws ClassNotCreatedException
+     */
+    public function __call($method, $parameters)
+    {
+        return Factory::build($method);
+    }
+
     public static function build($class_name)
     {
         $class_name = str_replace(['/', '.'], '\\', $class_name);
