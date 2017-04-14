@@ -3,20 +3,9 @@
 namespace TeamWorkPm;
 
 use Illuminate\Support\ServiceProvider;
-use TeamWorkPm\Facades\Teamwork;
 
 class TeamworkServiceProvider extends ServiceProvider
 {
-    /**
-     * Bootstrap the application services.
-     *
-     * @return void
-     */
-    public function boot()
-    {
-        //
-    }
-
     /**
      * Register the application services.
      *

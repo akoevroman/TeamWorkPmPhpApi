@@ -25,7 +25,7 @@ class Time extends Model
             'time'=>true,
             'isbillable'=>false
         ];
-        $this->parent = 'time-entry';
+        $this->parent = 'time-totals';
         //$this->action = 'time_entries';
     }
 
@@ -97,7 +97,7 @@ class Time extends Model
     /**
      * Retrieve all To-do Item Times
      *
-     * GET /todo_items/#{todo_item_id}/time_entries
+     * GET /task/#{todo_item_id}/time_entries
      *
      * Retrieves all of the time entries from a submitted todo item.
      *
@@ -106,6 +106,26 @@ class Time extends Model
      * @return TeamWorkPm\Response\Model
      */
     public function getByTask($task_id, array $params = [])
+    {
+        $task_id = (int) $task_id;
+        if ($task_id <= 0) {
+            throw new Exception('Invalid param task_id');
+        }
+        return $this->rest->get("tasks/$task_id/time/total", $params);
+    }
+
+    /**
+     * Retrieve all To-do Item Times
+     *
+     * GET /todo_items/#{todo_item_id}/time_entries
+     *
+     * Retrieves all of the time entries from a submitted todo item.
+     *
+     * @param int $id
+     * @param array $params
+     * @return TeamWorkPm\Response\Model
+     */
+    public function getAllTodo($task_id, array $params = [])
     {
         $task_id = (int) $task_id;
         if ($task_id <= 0) {

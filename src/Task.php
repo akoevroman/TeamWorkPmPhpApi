@@ -47,22 +47,23 @@ class Task extends Model
             ],
             'responsible_party_id'     => false,
             'attachments'              => false,
-            'pending_file_attachments' => false
+            'pending_file_attachments' => false,
+            'tasklistId' => false,
+            'nestSubTasks'              => false,
+            'includeCompletedSubtasks' => false,
         ];
         $this->parent = 'todo-item';
         $this->action = 'todo_items';
    }
 
-    public function get($id, $get_time = false)
+    public function get($id, $params = null)
     {
+
         $id = (int) $id;
         if ($id <= 0) {
             throw new Exception('Invalid param id');
         }
-        $params = [];
-        if ($get_time) {
-            $params['getTime'] = (int) $get_time;
-        }
+
         return $this->rest->get("$this->action/$id", $params);
     }
 
@@ -100,6 +101,20 @@ class Task extends Model
             $params['filter'] = 'all';
         }
         return $this->rest->get("todo_lists/$task_list_id/$this->action", $params);
+    }
+
+    public function getByProject($project_id, $params)
+    {
+        $project_id = (int) $project_id;
+        if ($project_id <= 0) {
+            throw new Exception('Invalid param task_list_id');
+        }
+
+        $validate = ['all', 'pending', 'upcoming','late','today','finished'];
+        if (!isset($params['filter']) || in_array($params['filter'], $validate)) {
+            $params['filter'] = 'all';
+        }
+        return $this->rest->get("projects/$project_id/tasks", $params);
     }
 
     /**

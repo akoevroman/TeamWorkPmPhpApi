@@ -97,7 +97,7 @@ class Task_List extends Model
             } elseif (in_array($params, $filter)) {
                 $params = ['filter'=> $params];
             } else {
-                $params = null;
+                $params = "all";
             }
         }
         return $this->rest->get("projects/$project_id/$this->action", $params);
