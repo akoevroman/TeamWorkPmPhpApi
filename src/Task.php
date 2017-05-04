@@ -13,6 +13,9 @@ class Task extends Model
                 ]
             ],
             'description'=>false,
+            'tags'=>false,
+            'commentFollowerIds'=>false,
+            'changeFollowerIds'=>false,
             'due_date'=>[
                 'required'=>false,
                 'attributes'=>[
