@@ -18,6 +18,7 @@ class JSON extends Model
                 $headers['Status'] === 409 ||
                 $headers['Status'] === 422
             )) {
+                print_r($headers);
                 dd($data);
             }
             if ($headers['Status'] === 201 || $headers['Status'] === 200) {
