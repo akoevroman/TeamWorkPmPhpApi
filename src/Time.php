@@ -91,7 +91,7 @@ class Time extends Model
         if ($project_id <= 0) {
             throw new Exception('Invalid param project_id');
         }
-        return $this->rest->get("projects/$project_id/$this->action", $params);
+        return $this->rest->get("projects/$project_id/time/total", $params);
     }
 
     /**

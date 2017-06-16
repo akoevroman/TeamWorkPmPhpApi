@@ -63,4 +63,9 @@ class TimeTotal extends Model
         }
         return $this->rest->get("tasks/$task_id/time/$this->action", $params);
     }
+
+    public function getByProject(array $params = [])
+    {
+        return $this->rest->get("projects/time/$this->action", $params);
+    }
 }
