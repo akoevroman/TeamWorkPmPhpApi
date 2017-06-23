@@ -153,26 +153,31 @@ final class Rest
      */
     public function get($action, $request = null)
     {
+        sleep(0.5);
         return $this->execute('GET', $action, $request);
     }
 
     public function put($action, $request = null)
     {
+        sleep(0.5);
         return $this->execute('PUT', $action, $request);
     }
 
     public function post($action, $request = null)
     {
+        sleep(0.5);
         return $this->execute('POST', $action, $request);
     }
 
     public function delete($action)
     {
+        sleep(0.5);
         return $this->execute('DELETE', $action, null);
     }
 
     public function upload($action, $request = null)
     {
+        sleep(0.5);
         return $this->execute('UPLOAD', $action, $request);
     }
 
