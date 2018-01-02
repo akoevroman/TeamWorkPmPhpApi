@@ -70,6 +70,23 @@ class Task extends Model
         return $this->rest->get("$this->action/$id", $params);
     }
 
+    /**
+     * @param $id
+     *
+     * @return TeamWorkPm\Response\Model
+     * @throws Exception
+     */
+    public function getTags($id)
+    {
+
+        $id = (int) $id;
+        if ($id <= 0) {
+            throw new Exception('Invalid param id');
+        }
+
+        return $this->rest->get("tasks/$id/tags");
+    }
+
 
     /**
      * Retrieve all tasks on a task list

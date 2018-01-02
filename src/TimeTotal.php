@@ -68,4 +68,13 @@ class TimeTotal extends Model
     {
         return $this->rest->get("projects/time/$this->action", $params);
     }
+
+    public function getByTaskList($id ,array $params = [])
+    {
+        $id = (int) $id;
+        if ($id <= 0) {
+            throw new Exception('Invalid param $id');
+        }
+        return $this->rest->get("tasklists/$id/time/$this->action", $params);
+    }
 }
