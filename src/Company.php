@@ -292,11 +292,11 @@ class Company extends Model
      * @return TeamWorkPm\Response\Model
      * @throws Exception
      */
-    public function getProjects($company_id){
+    public function getProjects($company_id, $params = null){
         $company_id = (int) $company_id;
         if ($company_id <= 0) {
             throw new \TeamWorkPm\Exception('Invalid param project_id');
         }
-        return $this->rest->get("$this->action/$company_id/projects");
+        return $this->rest->get("$this->action/$company_id/projects", $params);
     }
 }
